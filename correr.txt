@@ -1,0 +1,22 @@
+
+python3 -m im2txt.run_inference --input_files wii.jpg
+
+python3 -m im2txt.run_video --input_files wii.jpg
+---------------------USANDO BAZEL-------------------------
+CHECKPOINT_PATH="${HOME}/im2txt/model/train/model.ckpt-3000000"
+VOCAB_FILE="${HOME}/im2txt/data/mscoco/word_counts3.txt"
+IMAGE_FILE="${HOME}/Documents/show_and_tell_SORE/wii.jpg"
+
+
+# Build the inference binary.
+bazel build -c opt im2txt/run_inference
+
+# Ignore GPU devices (only necessary if your GPU is currently memory
+# constrained, for example, by running the training script).
+export CUDA_VISIBLE_DEVICES=""
+
+# Run inference to generate captions.
+bazel-bin/im2txt/run_inference \
+  --checkpoint_path=${CHECKPOINT_PATH} \
+  --vocab_file=${VOCAB_FILE} \
+  --input_files=${IMAGE_FILE}
