@@ -83,7 +83,7 @@ def main(_):
     # available beam search parameters.
     generator = caption_generator.CaptionGenerator(model, vocab)
     
-    cur.execute("SELECT image_url FROM annotations")
+    cur.execute("SELECT DISTINCT image_id,image_url FROM annotations")
     urls = cur.fetchall()
     for url in urls: #for array con urls
       try:
@@ -96,14 +96,17 @@ def main(_):
 
         captions = generator.beam_search(sess, image)
         #print("Captions for image %s:" % os.path.basename(filename))
-        for i, caption in enumerate(captions):
+        caption = captions[0]
+        #for i, caption in enumerate(captions):
           # Ignore begin and end words.
-          sentence = [vocab.id_to_word(w) for w in caption.sentence[1:-1]]
-          sentence = " ".join(sentence)
+        sentence = [vocab.id_to_word(w) for w in caption.sentence[1:-1]]
+        sentence = " ".join(sentence)
           #print("  %d) %s (p=%f)" % (i, sentence, math.exp(caption.logprob)))
           #cur.execute("INSERT INTO img2txt(id_image,caption,caption_p) VALUES (%s,%s,%s)",(old_id,sentence,math.exp(caption.logprob)))
           #db.commit();
-          print(sentence)
+        query = ("UPDATE annotations SET image_caption=%s WHERE image_id=%s")
+        cur.execute(query,(sentence,url['image_id']))
+        print(sentence)
       except KeyboardInterrupt:
         db.close();
         break
