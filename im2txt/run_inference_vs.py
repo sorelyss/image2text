@@ -37,7 +37,7 @@ import PIL.Image
 from io import BytesIO
 import requests
 
-db = pymysql.connect(user='root', password='control1234', host='localhost', database='nao_db', cursorclass=pymysql.cursors.DictCursor)
+db = pymysql.connect(user='nao', password='control1234', host='mydbinst-rds.catb3i4xromj.us-west-2.rds.amazonaws.com', database='nao_db', cursorclass=pymysql.cursors.DictCursor)
 db.autocommit(True)
 cur=db.cursor()
 
