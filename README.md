@@ -9,7 +9,7 @@ Implementation of Google's im2txt model for tensorflow (Updated for Python 3.5.2
 ## Getting Started
 Following the steps in the issue cited before, it can be fixed the version problems of the pretrained models. Just run the next snippets at the respectively file locations.
 
-In order to update the vocabulary file:
+In order to update the vocabulary file delete the first a on the txt file and:
 ```python
 OLD_VOCAB_FILE = "word_counts.txt" # the path of the vocabulary file
 NEW_VOCAB_FILE = "word_counts3.txt" # the path for the fixed vocabulary file
@@ -60,4 +60,4 @@ Another way to run the project is by typing at the termianl ```python3 -m im2txt
 The notebook is based on run_inference.py, and the last one is almost the same that can be found in the im2txt documentation.
 
 
-In the notebook, you will see the editable parts of the code in order to implemnt the algorithm.
+In the notebook, you will see the editable parts of the code in order to implement the algorithm.
