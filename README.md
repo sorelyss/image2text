@@ -9,7 +9,7 @@ Implementation of Google's im2txt model for tensorflow (Updated for Python 3.5.2
 ## Getting Started
 Following the steps in the issue cited before, it can be fixed the version problems of the pretrained models. Just run the next snippets at the respectively file locations.
 
-In order to update the vocabulary file delete the first a on the txt file and:
+In order to update the vocabulary file:
 ```python
 OLD_VOCAB_FILE = "word_counts.txt" # the path of the vocabulary file
 NEW_VOCAB_FILE = "word_counts3.txt" # the path for the fixed vocabulary file
