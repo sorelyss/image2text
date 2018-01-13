@@ -1,5 +1,5 @@
 # image2text
-Implementation of Google's im2txt model for tensorflow (Updated for Python 3.5.2 and TensorFlow 1.0.1)
+Implementation of Google's [im2txt](https://github.com/tensorflow/models/tree/master/research/im2txt) model for tensorflow (Updated for Python 3.5.2 and TensorFlow 1.0.1). It also can run in Windows and bazel is not necessary.
 
 ## Requirements
 <li>Python 3.5
